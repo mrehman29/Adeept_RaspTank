@@ -17,8 +17,11 @@ import random
 '''
 change this form 1 to -1 to reverse servos
 '''
-pwm = i2c = busio.I2C(SCL, SDA)
-pwm.set_pwm_freq(50)
+
+i2c = busio.I2C(SCL, SDA)
+pwm = PCA9685(i2c)
+# pwm.set_pwm_freq(50)
+pwm.frequency = 50
 
 init_pwm0 = 300
 init_pwm1 = 300

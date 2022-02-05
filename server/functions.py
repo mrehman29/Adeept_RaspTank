@@ -7,7 +7,10 @@ import time
 import RPi.GPIO as GPIO
 import threading
 from mpu6050 import mpu6050
-import Adafruit_PCA9685
+# import Adafruit_PCA9685
+from board import SCL, SDA
+import busio
+from adafruit_pca9685 import PCA9685
 import os
 import json
 import ultra
@@ -18,9 +21,10 @@ move.setup()
 
 kalman_filter_X =  Kalman_filter.Kalman_filter(0.01,0.1)
 
-pwm = Adafruit_PCA9685.PCA9685()
+i2c = busio.I2C(SCL, SDA)
+pwm = PCA9685(i2c)
 # pwm.set_pwm_freq(50)
-pca.frequency = 50
+pwm.frequency = 50
 
 # MPU_connection = 1
 # try:

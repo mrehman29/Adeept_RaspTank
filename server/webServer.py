@@ -8,7 +8,8 @@
 import time
 import threading
 import move
-import Adafruit_PCA9685
+#import Adafruit_PCA9685
+from adafruit_pca9685 import PCA9685
 import os
 import info
 import RPIservo
@@ -194,7 +195,7 @@ def switchCtrl(command_input, response):
         switch.switch(3,1)
 
     elif 'Switch_3_off' in command_input:
-        switch.switch(3,0) 
+        switch.switch(3,0)
 
 
 def robotCtrl(command_input, response):
@@ -202,7 +203,7 @@ def robotCtrl(command_input, response):
     if 'forward' == command_input:
         direction_command = 'forward'
         move.move(speed_set, 'forward', 'no', rad)
-    
+
     elif 'backward' == command_input:
         direction_command = 'backward'
         move.move(speed_set, 'backward', 'no', rad)
@@ -251,7 +252,7 @@ def robotCtrl(command_input, response):
 
     elif 'handup' == command_input:
         # H1_sc.singleServo(12, 1, 7)
-        
+
         H2_sc.singleServo(13, -1, 7)
 
     elif 'handdown' == command_input:
@@ -265,7 +266,7 @@ def robotCtrl(command_input, response):
 
     elif 'armup' == command_input:
         H1_sc.singleServo(12, 1, 7)
-        
+
         # H2_sc.singleServo(13, 1, 7)
 
     elif 'armdown' == command_input:
@@ -360,7 +361,7 @@ def update_code():
                 print('Update successfully')
                 print('Restarting...')
                 os.system('sudo reboot')
-'''   
+'''
 def wifi_check():
     try:
         s =socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
@@ -421,7 +422,7 @@ async def recv_msg(websocket):
     direction_command = 'no'
     turn_command = 'no'
 
-    while True: 
+    while True:
         response = {
             'status' : 'ok',
             'title' : '',
@@ -521,7 +522,7 @@ if __name__ == '__main__':
     switch.set_all_switch_off()
 
     HOST = ''
-    PORT = 10223                              #Define port serial 
+    PORT = 10223                              #Define port serial
     BUFSIZ = 1024                             #Define buffer size
     ADDR = (HOST, PORT)
 

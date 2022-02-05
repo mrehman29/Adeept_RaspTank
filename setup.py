@@ -73,7 +73,7 @@ for x in range(3):
 
 commands_3 = [
     "sudo pip3 install numpy",
-    "sudo pip3 install opencv-contrib-python==3.4.3.18",
+    "sudo pip3 install opencv-contrib-python==3.4.13.47",
     "sudo pip3 install imutils zmq pybase64 psutil"
 ]
 

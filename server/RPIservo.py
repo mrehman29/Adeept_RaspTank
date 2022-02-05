@@ -19,7 +19,7 @@ change this form 1 to -1 to reverse servos
 '''
 
 i2c = busio.I2C(SCL, SDA)
-pwm = PCA9685()
+pwm = PCA9685(i2c,address=0x40)
 # pwm.set_pwm_freq(50)
 pwm.frequency = 50
 

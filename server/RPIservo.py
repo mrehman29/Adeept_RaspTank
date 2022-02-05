@@ -7,14 +7,17 @@ from __future__ import division
 import time
 import RPi.GPIO as GPIO
 import sys
-import Adafruit_PCA9685
+from board import SCL, SDA
+import busio
+# import Adafruit_PCA9685
+from adafruit_pca9685 import PCA9685
 import threading
 
 import random
 '''
 change this form 1 to -1 to reverse servos
 '''
-pwm = Adafruit_PCA9685.PCA9685()
+pwm = i2c = busio.I2C(SCL, SDA)
 pwm.set_pwm_freq(50)
 
 init_pwm0 = 300
@@ -64,7 +67,7 @@ class ServoCtrl(threading.Thread):
 		self.scMode = 'auto'
 		self.scTime = 2.0
 		self.scSteps = 30
-		
+
 		self.scDelay = 0.037
 		self.scMoveTime = 0.037
 
